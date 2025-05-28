@@ -15,7 +15,7 @@ const db = getFirestore(firebaseApp);
 
 export const getMensagem = async (req, res) => {
     try{
-        const ref = doc(db, 'mensagens', 'mensagem1');
+        const ref = doc(db, 'mensagens', 'AALo3kn5gW5IZo3kY3TL');
         const snap = await getDoc(ref);
 
         if(!snap.exists()){

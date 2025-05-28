@@ -1,15 +1,15 @@
 import express from 'express';
 import { config } from 'dotenv';
 import { firebaseRoutes } from '../src/routes/firebaseRoutes.js';
+import serverless from 'serverless-http'; // ← IMPORTANTE
 
 config();
 
 const app = express();
 app.use(express.json());
 
-// Para acessar: /api/firebase/mensagem
+// Rota base (ex: /mensagem)
 app.use('/', firebaseRoutes);
 
-export default function handler(req, res) {
-  return app(req, res);
-}
+// Transforma o app Express em handler compatível com Vercel
+export default serverless(app);
